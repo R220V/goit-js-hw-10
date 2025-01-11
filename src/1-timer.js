@@ -4,32 +4,34 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-let userSelectedDate = null;
-let countdownInterval = null;
+// let userSelectedDate = null;
+// let countdownInterval = null;
 
-const refs = {
-  datetimePicker: document.querySelector('#datetime-picker'),
-  startButton: document.querySelector('[data-start]'),
-  daysValue: document.querySelector('[data-days]'),
-  hoursValue: document.querySelector('[data-hours]'),
-  minutesValue: document.querySelector('[data-minutes]'),
-  secondsValue: document.querySelector('[data-seconds]'),
-};
+// const refs = {
+//   datetimePicker: document.querySelector('#datetime-picker'),
+//   startButton: document.querySelector('[data-start]'),
+//   daysValue: document.querySelector('[data-days]'),
+//   hoursValue: document.querySelector('[data-hours]'),
+//   minutesValue: document.querySelector('[data-minutes]'),
+//   secondsValue: document.querySelector('[data-seconds]'),
+// };
 
 iziToast.show({
   title: 'Hey',
   message: 'What would you like to add?',
 });
 
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    console.log(selectedDates[0]);
-  },
-};
+flatpickr(refs.datetimePicker, options);
+
+// const options = {
+//   enableTime: true,
+//   time_24hr: true,
+//   defaultDate: new Date(),
+//   minuteIncrement: 1,
+//   onClose(selectedDates) {
+//     console.log(selectedDates[0]);
+//   },
+// };
 
 // function convertMs(ms) {
 //   // Number of milliseconds per unit of time
@@ -49,5 +51,3 @@ const options = {
 
 //   return { days, hours, minutes, seconds };
 // }
-
-flatpickr(refs.datetimePicker, options);
