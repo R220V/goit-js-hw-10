@@ -59,3 +59,32 @@ body {
   font-size: 2rem;
   font-weight: bold;
 }
+
+.timer-btn {
+  border-radius: 4px;
+  background-color: #0037ff96;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.timer-btn:hover {
+  background-color: #0037ff;
+}
+
+.form-fieldset {
+  margin: 20px;
+}
+
+.form-btn {
+  width: 150px;
+  height: 40px;
+  padding: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #0037ff96;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.form-btn:hover {
+  background-color: #0037ff;
+}

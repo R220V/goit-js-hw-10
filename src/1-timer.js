@@ -77,7 +77,7 @@ function updateTimerDisplay(ms) {
   refs.minutesValue.textContent = addLeadingZero(minutes);
   refs.secondsValue.textContent = addLeadingZero(seconds);
 }
-//форматування часу в мілісекундах
+
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
