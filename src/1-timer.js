@@ -1,5 +1,5 @@
 import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
+import 'flatpickr/dist/themes/material_blue.css';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -16,11 +16,6 @@ const refs = {
   secondsValue: document.querySelector('[data-seconds]'),
 };
 
-iziToast.show({
-  title: 'Hey',
-  message: 'What would you like to add?',
-});
-
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -31,6 +26,9 @@ const options = {
     if (selectedDate <= new Date()) {
       iziToast.error({
         title: 'Error',
+        messageColor: 'Purple',
+        color: 'red',
+        position: 'topRight',
         message: 'Please choose a date in the future',
       });
       refs.startButton.disabled = true;
@@ -43,21 +41,57 @@ const options = {
 
 flatpickr(refs.datetimePicker, options);
 
-// function convertMs(ms) {
-//   // Number of milliseconds per unit of time
-//   const second = 1000;
-//   const minute = second * 60;
-//   const hour = minute * 60;
-//   const day = hour * 24;
+refs.startButton.addEventListener('click', () => {
+  if (!userSelectedDate) return;
 
-//   // Remaining days
-//   const days = Math.floor(ms / day);
-//   // Remaining hours
-//   const hours = Math.floor((ms % day) / hour);
-//   // Remaining minutes
-//   const minutes = Math.floor(((ms % day) % hour) / minute);
-//   // Remaining seconds
-//   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+  refs.startButton.disabled = true;
+  refs.datetimePicker.disabled = true;
 
-//   return { days, hours, minutes, seconds };
-// }
+  countdownInterval = setInterval(() => {
+    const now = new Date();
+    const timeLeft = userSelectedDate - now;
+
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      updateTimerDisplay(0);
+      iziToast.success({
+        title: 'Done',
+        messageColor: 'green',
+        messageSize: '20',
+        position: 'topRight',
+        message: 'Countdown completed!',
+      });
+      refs.datetimePicker.disabled = false;
+      return;
+    }
+
+    updateTimerDisplay(timeLeft);
+  }, 1000);
+});
+
+function updateTimerDisplay(ms) {
+  const { days, hours, minutes, seconds } = convertMs(ms);
+
+  refs.daysValue.textContent = addLeadingZero(days);
+  refs.hoursValue.textContent = addLeadingZero(hours);
+  refs.minutesValue.textContent = addLeadingZero(minutes);
+  refs.secondsValue.textContent = addLeadingZero(seconds);
+}
+//форматування часу в мілісекундах
+function convertMs(ms) {
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
