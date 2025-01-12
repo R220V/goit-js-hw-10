@@ -60,7 +60,6 @@ body {
   border-radius: 4px;
   background-color: #0037ff96;
   color: rgb(255, 255, 255);
-  cursor: pointer;
 }
 .timer-btn:hover {
   background-color: #0037ff;
