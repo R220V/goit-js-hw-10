@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load
-      src="./partials/header.html"
-      icon-path="./img/sprite.svg#logo"
-      highlight-act="active"
-    />
+    <header class="header" icon-path="img/sprite.svg#logo">
+      <div class="container"></div>
+    </header>
+
 
     <main>
       <div class="container">
         <h1 class="main-title">
           <span class="main-title-gradient">Welcome</span> to Timer
         </h1>
-        <load src="./partials/back-link.html" />
+        <a class="back-link" href="./index.html">Back</a>
       </div>
 
       <section class="section-time">
@@ -46,8 +45,12 @@
               <span class="label">Seconds</span>
             </div>
              </section>
-            <script type="module" src="./1-timer.js"></script>
+            <script type="module" src="./js/1-timer.js"></script>
           </main>
-    <load src="./partials/footer.html" />
+          <footer class="footer">
+            <div class="container">
+              <p class="footer-desc">Made by "Krus"</p>
+            </div>
+          </footer>
   </body>
 </html>

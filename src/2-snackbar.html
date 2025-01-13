@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load
-      src="./partials/header.html"
-      icon-path="./img/sprite.svg#logo"
-      highlight-curr="active"
-    />
+    <header class="header" icon-path="img/sprite.svg#logo">
+      <div class="container"></div>
+    </header>
 
     <main>
       <div class="container">
         <h1 class="main-title">
           <span class="main-title-gradient">Welcome</span> to Snackbar
         </h1>
-        <load src="./partials/back-link.html" />
+        <a class="back-link" href="./index.html">Back</a>
       </div>
 
       <div class="div-snackbar">
@@ -44,8 +42,12 @@
           <button class="form-btn" type="submit">Create notification</button>
         </form>
       </div>
-      <script type="module" src="./2-snackbar.js"></script>
+      <script type="module" src="./js/2-snackbar.js"></script>
     </main>
-    <load src="./partials/footer.html" />
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-desc">Made by "Krus"</p>
+      </div>
+    </footer>
   </body>
 </html>

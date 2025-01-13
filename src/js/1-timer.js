@@ -28,7 +28,7 @@ const options = {
         title: 'Error',
         messageColor: 'Purple',
         color: 'red',
-        position: 'topRight',
+        position: 'bottomRight',
         message: 'Please choose a date in the future',
       });
       refs.startButton.disabled = true;
@@ -57,7 +57,7 @@ refs.startButton.addEventListener('click', () => {
       iziToast.success({
         title: 'Done',
         messageColor: 'green',
-        messageSize: '20',
+        messageSize: '16',
         position: 'topRight',
         message: 'Countdown completed!',
       });
